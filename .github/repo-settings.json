@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "tier": 1,
+  "description": "File-domain hashing for the pith suite: FastCDC chunk signatures, exact chunk-set Jaccard, PDF text extraction",
+  "homepage": "https://github.com/pith-hash/pith-file",
+  "topics": [
+    "rust",
+    "hashing",
+    "deduplication"
+  ]
+}

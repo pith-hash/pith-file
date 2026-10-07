@@ -1,0 +1,140 @@
+{
+  "suite": "pith",
+  "crate": "pith-file",
+  "format_version": 1,
+  "generator": "cargo run --bin gen-reference -- gen",
+  "description": "Hex-exact file-domain reference vectors for pith-file: raw-byte SHA-256, FastCDC chunk boundaries with per-chunk SHA-256 digests, unique chunk-digest set folds, exact Jaccard similarities (IEEE-754 bits), PDF text-extraction digests and exact PDF refusal messages over the committed fixture and inline corpus.",
+  "vectors": [
+    {
+      "name": "splitmix64-48kib",
+      "input": { "kind": "splitmix64", "seed_hex": "00000000d15e5eed", "length": 49152 },
+      "cdc_params": { "min": 2048, "avg": 8192, "max": 32768 },
+      "raw_sha256": "00553543ee7a066c320e955d03ee87d81bcfcb2a082df28b640a2331deabe744",
+      "chunk_digest_count": 5,
+      "chunk_digests_first": "7e1d45594ea38b3b0e62022d68cdc011425d3c0388396da22c221bddc5053e8c",
+      "chunk_digests_fnv1a64": "94f69a2363d2a0bd",
+      "chunk_digests_sha256": "e9fcd4223e6580c8362c849ee3c28982f049478471c6058d3907057189936ad5"
+    },
+    {
+      "name": "splitmix64-48kib-prefix-insert",
+      "input": { "kind": "prefix-insert", "seed_hex": "00000000d15e5eed", "length": 49152 },
+      "cdc_params": { "min": 2048, "avg": 8192, "max": 32768 },
+      "raw_sha256": "62f33b5db6cfc8d77e87c8616eac7cc0b0cee62251a214a66d541fd81a418064",
+      "chunk_digest_count": 5,
+      "chunk_digests_first": "7e1d45594ea38b3b0e62022d68cdc011425d3c0388396da22c221bddc5053e8c",
+      "chunk_digests_fnv1a64": "723e4aa12df2d23e",
+      "chunk_digests_sha256": "e92c1a7e86dcd00e3dc02c240acedd5afc37457c286af38d485ba6c5940f3df6"
+    },
+    {
+      "name": "splitmix64-48kib-unrelated",
+      "input": { "kind": "splitmix64", "seed_hex": "00000000badc0ffe", "length": 49152 },
+      "cdc_params": { "min": 2048, "avg": 8192, "max": 32768 },
+      "raw_sha256": "db993e1aefd4ac8218d9102931b182ae992c898af35a63369f0f2f8aab836b50",
+      "chunk_digest_count": 7,
+      "chunk_digests_first": "0bb5c092b7caa87aa4f9ca7ad93e60db5525feeedcfe286cb849893651fb315d",
+      "chunk_digests_fnv1a64": "26236e4c8d67cc8c",
+      "chunk_digests_sha256": "85ebab46a3af5015872e95dab473adaa114c9de5ecc55c04b7b9eedd1c51d9ea"
+    },
+    {
+      "name": "zeros-256kib",
+      "input": { "kind": "zeros", "seed_hex": "0000000000000000", "length": 262144 },
+      "cdc_params": { "min": 2048, "avg": 8192, "max": 32768 },
+      "raw_sha256": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+      "chunk_digest_count": 1,
+      "chunk_digests_first": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479",
+      "chunk_digests_fnv1a64": "5135cfc8de535151",
+      "chunk_digests_sha256": "60a9c8fc58b0359bcd57afd1d3475979521b4a2b2f625dc1d730e0a7b854d951"
+    },
+    {
+      "name": "splitmix64-1kib-submin",
+      "input": { "kind": "splitmix64", "seed_hex": "0000000000000009", "length": 1024 },
+      "cdc_params": { "min": 2048, "avg": 8192, "max": 32768 },
+      "raw_sha256": "1d1197d49c7df59db2037526607a4f51614959cbb1233cb686b80f81ddfe6dca",
+      "chunk_digest_count": 1,
+      "chunk_digests_first": "1d1197d49c7df59db2037526607a4f51614959cbb1233cb686b80f81ddfe6dca",
+      "chunk_digests_fnv1a64": "6e796816bf908255",
+      "chunk_digests_sha256": "15ee643bbbb3b634646a652f0fcd927aa29028184520628f48ff789d2a918d51",
+      "chunks": [
+        [0, 1024, "1d1197d49c7df59db2037526607a4f51614959cbb1233cb686b80f81ddfe6dca"]
+      ]
+    },
+    {
+      "name": "empty",
+      "input": { "kind": "splitmix64", "seed_hex": "0000000000000000", "length": 0 },
+      "cdc_params": { "min": 2048, "avg": 8192, "max": 32768 },
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "chunk_digest_count": 0,
+      "chunk_digests_first": null,
+      "chunk_digests_fnv1a64": "cbf29ce484222325",
+      "chunk_digests_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "chunks": [
+
+      ]
+    },
+    {
+      "name": "jaccard-identical",
+      "a": "splitmix64-48kib",
+      "b": "splitmix64-48kib",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "value_bits": "3ff0000000000000"
+    },
+    {
+      "name": "jaccard-near-duplicate",
+      "a": "splitmix64-48kib",
+      "b": "splitmix64-48kib-prefix-insert",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "value_bits": "3fe5555555555555"
+    },
+    {
+      "name": "jaccard-unrelated",
+      "a": "splitmix64-48kib",
+      "b": "splitmix64-48kib-unrelated",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "value_bits": "0000000000000000"
+    },
+    {
+      "name": "jaccard-against-empty",
+      "a": "splitmix64-48kib",
+      "b": "empty",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "value_bits": "0000000000000000"
+    },
+    {
+      "name": "jaccard-empty-empty",
+      "a": "empty",
+      "b": "empty",
+      "value_kind": "f64-ieee754-bits-hex",
+      "policy": "exact",
+      "value_bits": "3ff0000000000000"
+    },
+    {
+      "name": "text-fixture-text_page",
+      "input_kind": "fixture-file",
+      "input_path": "tests/fixtures/text_page.pdf",
+      "input_sha256": "81357e9f4320adeed446075dc57fa0690a4d1aa6c4296f91c29da077170b061d",
+      "format": "pdf",
+      "text_bytes": 9,
+      "text_sha256": "6d0c6c3113b6765a4eedb63f451cc5b4b8554159a78a3782f6cceef631046ee4"
+    },
+    {
+      "name": "error-pdf-gutted",
+      "input_kind": "inline-hex",
+      "input_hex": "255044462d312e370a626f6479",
+      "format": "pdf",
+      "error_kind": "Pdf",
+      "error_message": "text: bad value: no objects found while scanning"
+    },
+    {
+      "name": "error-pdf-empty",
+      "input_kind": "inline-hex",
+      "input_hex": "",
+      "format": "pdf",
+      "error_kind": "Pdf",
+      "error_message": "text: truncated: PDF header"
+    }
+  ]
+}
