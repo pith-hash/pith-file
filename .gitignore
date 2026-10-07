@@ -61,3 +61,10 @@ superpower/
 superpowers/
 docs/superpowers/
 
+# Python SDK build scaffolding
+sdk/python/build/
+*.egg-info/
+
+
+# Python SDK wheel output
+sdk/python/dist/

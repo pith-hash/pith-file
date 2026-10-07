@@ -1,0 +1,33 @@
+{
+  "name": "@pith-hash/pith-file",
+  "version": "0.1.0",
+  "description": "File-domain hashing SDK: FastCDC chunk signatures, exact chunk-set Jaccard and PDF text extraction via the pith-file Rust cdylib (koffi, prebuilt)",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "prebuilds/",
+    "reference.json"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "koffi": "^2.12.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pith-hash/pith-file.git",
+    "directory": "sdk/node"
+  },
+  "keywords": [
+    "fastcdc",
+    "deduplication",
+    "jaccard",
+    "pdf",
+    "hashing"
+  ]
+}

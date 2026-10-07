@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pith-file"
+version = "0.1.0"
+description = "File-domain hashing SDK: FastCDC chunk signatures, exact chunk-set Jaccard and PDF text extraction via the pith-file Rust cdylib (ctypes, zero-dep)"
+license = "MIT"
+requires-python = ">=3.9"
+keywords = ["fastcdc", "deduplication", "jaccard", "pdf", "hashing"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Rust",
+  "Topic :: Security :: Cryptography",
+]
+
+[project.urls]
+Repository = "https://github.com/pith-hash/pith-file"
+Homepage = "https://github.com/pith-hash/pith-file"
+
+[tool.setuptools]
+packages = ["pith_file"]
+
+[tool.setuptools.package-data]
+pith_file = ["*.dll", "*.dylib", "*.so"]

@@ -20,13 +20,18 @@
 //! The tier-1 content hash and the cross-modal facade that routes a
 //! sniffed container into this slice live in the suite's curator crate.
 
-#![no_std]
-#![forbid(unsafe_code)]
+#![cfg_attr(not(feature = "std"), no_std)]
+// `unsafe` is denied everywhere except `ffi`, the C ABI surface the
+// language SDKs bind through: raw pointers exist only at that boundary,
+// and every exported function is a documented `unsafe extern "C"` fn.
+#![deny(unsafe_code)]
 #![deny(missing_docs)]
 
 extern crate alloc;
 
 mod error;
+
+pub mod ffi;
 
 use alloc::collections::BTreeSet;
 use alloc::vec::Vec;
