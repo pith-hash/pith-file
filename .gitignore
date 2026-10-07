@@ -68,3 +68,6 @@ sdk/python/build/
 
 # Python SDK wheel output
 sdk/python/dist/
+
+# Java SDK build scaffolding
+sdk/java/target/

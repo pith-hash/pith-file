@@ -21,9 +21,10 @@
 //! sniffed container into this slice live in the suite's curator crate.
 
 #![cfg_attr(not(feature = "std"), no_std)]
-// `unsafe` is denied everywhere except `ffi`, the C ABI surface the
-// language SDKs bind through: raw pointers exist only at that boundary,
-// and every exported function is a documented `unsafe extern "C"` fn.
+// `unsafe` is denied everywhere except `ffi` (the C ABI surface the
+// language SDKs bind through) and `ffi_jni` (the JNI surface the Java
+// SDK binds through): raw pointers exist only at those boundaries, and
+// every exported function is a documented `unsafe extern` fn.
 #![deny(unsafe_code)]
 #![deny(missing_docs)]
 
@@ -32,6 +33,7 @@ extern crate alloc;
 mod error;
 
 pub mod ffi;
+mod ffi_jni;
 
 use alloc::collections::BTreeSet;
 use alloc::vec::Vec;

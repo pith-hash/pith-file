@@ -194,7 +194,8 @@ pub unsafe extern "C" fn pith_file_free(ptr: *mut u8, len: usize) {
 
 /// The format wire-code table: the single Pdf lane the suite's file
 /// slice routes to `pith_pdf`.
-fn wire_format(code: u32) -> Option<Format> {
+/// `pub(crate)`: the JNI surface (`ffi_jni`) routes through the same core.
+pub(crate) fn wire_format(code: u32) -> Option<Format> {
     match code {
         PITH_FILE_FORMAT_PDF => Some(Format::Pdf),
         _ => None,
@@ -204,7 +205,8 @@ fn wire_format(code: u32) -> Option<Format> {
 /// The safe core of [`pith_file_binary_signature`]: sign, then
 /// serialize the canonical chunk-set stream. Signature failures map to
 /// [`PITH_E_REJECTED`] (unreachable with the spec-pinned parameters).
-fn signature_stream(bytes: &[u8]) -> Result<alloc::vec::Vec<u8>, i32> {
+/// `pub(crate)`: the JNI surface (`ffi_jni`) routes through the same core.
+pub(crate) fn signature_stream(bytes: &[u8]) -> Result<alloc::vec::Vec<u8>, i32> {
     let digests = binary_signature(bytes)
         .map_err(|_| PITH_E_REJECTED)?
         .chunks();
@@ -218,7 +220,8 @@ fn signature_stream(bytes: &[u8]) -> Result<alloc::vec::Vec<u8>, i32> {
 
 /// The safe core of [`pith_file_jaccard`]: both signatures, then the
 /// exact similarity as its IEEE-754 bit pattern.
-fn jaccard_bits(a: &[u8], b: &[u8]) -> Result<u64, i32> {
+/// `pub(crate)`: the JNI surface (`ffi_jni`) routes through the same core.
+pub(crate) fn jaccard_bits(a: &[u8], b: &[u8]) -> Result<u64, i32> {
     let lhs = binary_signature(a).map_err(|_| PITH_E_REJECTED)?;
     let rhs = binary_signature(b).map_err(|_| PITH_E_REJECTED)?;
     Ok(lhs.jaccard(&rhs).to_bits())
@@ -226,7 +229,8 @@ fn jaccard_bits(a: &[u8], b: &[u8]) -> Result<u64, i32> {
 
 /// The safe core of [`pith_file_text_content`]: extraction failures
 /// map to [`PITH_E_REJECTED`].
-fn extract(bytes: &[u8], format: Format) -> Result<alloc::vec::Vec<u8>, i32> {
+/// `pub(crate)`: the JNI surface (`ffi_jni`) routes through the same core.
+pub(crate) fn extract(bytes: &[u8], format: Format) -> Result<alloc::vec::Vec<u8>, i32> {
     text_content(bytes, format)
         .map(alloc::borrow::Cow::into_owned)
         .map_err(|_| PITH_E_REJECTED)
