@@ -25,12 +25,12 @@ std = []
 [dependencies]
 # FastCDC chunking and SHA-256 come from sibling suite crates; the
 # fleet-wide error/result types live in pith-digest.
-pith-digest = { git = "https://github.com/pith-hash/pith-digest.git", branch = "main" }
-pith-cdc = { git = "https://github.com/pith-hash/pith-cdc.git", branch = "main" }
+pith-digest = { version = "0.1", git = "https://github.com/pith-hash/pith-digest.git", branch = "main" }
+pith-cdc = { version = "0.1", git = "https://github.com/pith-hash/pith-cdc.git", branch = "main" }
 # PDF text extraction is a runtime dependency: its Error type carries
 # page/object attribution and is wrapped as Error::Pdf rather than
 # folded into pith-digest::Error.
-pith-pdf = { git = "https://github.com/pith-hash/pith-pdf.git", branch = "main" }
+pith-pdf = { version = "0.1", git = "https://github.com/pith-hash/pith-pdf.git", branch = "main" }
 
 # Vector generator: regenerates reference.json (CI verifies it is current,
 # CD ships it with the SDK artifacts).
