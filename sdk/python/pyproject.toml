@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pith-file"
-version = "0.1.1-beta.1"
+version = "0.1.1"
 description = "File-domain hashing SDK: FastCDC chunk signatures, exact chunk-set Jaccard and PDF text extraction via the pith-file Rust cdylib (ctypes, zero-dep)"
 license = "MIT"
 requires-python = ">=3.9"
